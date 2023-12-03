@@ -3,6 +3,7 @@ const field = input.map(l=>l.split('').map(c=>c.charCodeAt(0)));
 const charCode0 = '0'.charCodeAt(0);
 const charCode9 = '9'.charCodeAt(0);
 const charCodeDot = '.'.charCodeAt(0);
+const charCodeStar = '*'.charCodeAt(0);
 const isNumber = cc => cc >= charCode0 && cc <= charCode9;
 const takeDigitAt = (arr, pos) => { const ret = arr[pos] - charCode0; arr[pos] = charCodeDot; return ret; }
 const isSymbol = c => c != charCodeDot && !isNumber(c);
@@ -41,3 +42,18 @@ for (let y = 0; y < height; y++) {
     }
 }
 const solutionPart1 = numbers.map(n=>n.number).reduce((sum,a)=>sum+a);
+
+const adjacentNumbers = (x,y) => numbers.filter(n => (Math.abs(n.y - y) < 2) && (n.start <= x+1) && (n.end >= x-1));
+
+let solutionPart2 = 0;
+for (let y = 0; y < height; y++) {
+    for (let x = 0; x < width; x++) {
+        if (field[y][x] == charCodeStar) {
+            const adjacent = adjacentNumbers(x,y,);
+            if (adjacent.length ==2) {
+                solutionPart2 += adjacent[0].number * adjacent[1].number;
+            }
+        }
+    }
+}
+
