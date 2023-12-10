@@ -55,3 +55,5 @@ while (solutionPart2 % instructions.length == 0) {
     break;
   }
 }
+
+// this solution actually works - result 24035773251517 - but took a very, very, very long time to compute
