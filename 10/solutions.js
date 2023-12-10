@@ -45,6 +45,8 @@ while (step[0].x != step[1].x || step[0].y != step[1].y) {
   step = [nextStep(step[0]), nextStep(step[1])];
   solutionPart1++;
 }
+// this is where both directions meet - not yet in loopOnly grid
+loopOnly[step[0].y][step[0].x] = grid[step[0].y][step[0].x];
 
 // Part 1 solved
 
@@ -99,4 +101,3 @@ if (boundaryContainsR == boundaryContainsL)
   throw "Cannot determine inner vs outer"
 const inner = boundaryContainsR ? 'l' : 'r';
 const solutionPart2 = loopOnly.map(r=>r.map(c=>c==inner?1:0).reduce((a,b)=>a+b)).reduce((a,b)=>a+b);
-// supposedly not correct...
